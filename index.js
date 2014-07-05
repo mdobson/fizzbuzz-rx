@@ -9,7 +9,6 @@ f.on('data', function() {
 
 setInterval(function(){
   f.write(Math.floor(Math.random() * 100));
-  //f.write(15);
 }, 2000);
 
 var source = Rx.Observable.fromEvent(f, 'data');
@@ -18,14 +17,22 @@ source
   .filter(function(d) {
     return typeof d.result == 'string';
   })
-  .filter(function(d) {
-    return d.result === 'FizzBuzz';
-  })
+  .merge(
+    source.filter(function(d) {
+      return d.result === 'FizzBuzz';
+    }),
+    source.filter(function(d) {
+      return d.result === 'Fizz';
+    }),
+    source.filter(function(d) {
+      return d.result === 'Buzz';
+    })
+  )
   .map(function(d) {
-    return d.data;
+    return d.data + ':' + d.result;
   })
   .subscribe(function(i) {
-    console.log('FizzBuzz:'+i);
+    console.log(i);
   },
   function(e) {
     console.log(e);
