@@ -1,0 +1,26 @@
+{
+  "name": "fizzbuzz-rx",
+  "version": "0.0.0",
+  "description": "FizzBuzz using streams and Rx",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdobson/fizzbuzz-rx.git"
+  },
+  "keywords": [
+    "Rx",
+    "FizzBuzz"
+  ],
+  "author": "mdobs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdobson/fizzbuzz-rx/issues"
+  },
+  "homepage": "https://github.com/mdobson/fizzbuzz-rx",
+  "dependencies": {
+    "rx": "^2.2.27"
+  }
+}
