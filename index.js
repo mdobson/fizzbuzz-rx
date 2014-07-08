@@ -45,7 +45,7 @@ var source = Rx.Observable.fromEvent(g, 'data');
 var streamOne = source.filter(function(d) { return d.result === 'Fizz'; }).map(function(d) { return d.data; });
 var streamTwo = source.filter(function(d) { return d.result === 'Buzz'; }).map(function(d) { return d.data; });
 
-var finalSource = Rx.Observable.zip( streamOne, streamTwo, function(one, two) { return arguments; });
+var finalSource = Rx.Observable.zip(streamOne, streamTwo, function(one, two) { return arguments; });
 
 function cb(one, two){
   console.log(one, two);
@@ -55,9 +55,4 @@ finalSource
   .subscribe(function(args) {
     cb.apply(null, Array.prototype.slice.call(args));
   });
-
-
-
-
-g.write(3);
-g.write(5);
+  
