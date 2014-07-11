@@ -56,3 +56,18 @@ finalSource
     cb.apply(null, Array.prototype.slice.call(args));
   });
   
+
+var h = new FizzBuzzStream();
+var source = Rx.Observable.fromEvent(h, 'data');
+
+source
+  .map(function(d) {
+    console.log('here');
+    console.log(d);
+    return d;
+  })
+  .subscribe(function(x) {
+    console.log(x);
+  });
+
+h.write(3);
