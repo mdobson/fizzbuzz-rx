@@ -22,7 +22,11 @@ var ends = Rx.Observable.create(function(observer) {
 
 var source = Rx.Observable.merge(fizzbuzz, generic, created, ends);
 
-var sub = source.subscribe(function(x) {
+var sub = source
+  .filter(function(d) {
+    return d > 1;
+  })
+  .subscribe(function(x) {
   console.log(x);
 });
 
